@@ -40,6 +40,7 @@ class About extends Component {
               {this.state.results.map(user =>
               <li className='list-group-item' key={user.id.value}><img alt={user.name.last} src={user.picture.medium}/> &nbsp; {user.name.last}, &nbsp; {user.name.first} &nbsp; {user.email}</li>
               )}
+              
             </ul>
           </div>
         </div>
