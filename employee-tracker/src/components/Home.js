@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import API from "./utils/API";
+import SearchForm from "./Search";
 
 
 class About extends Component {
   state = {
+    search: "",
     results: []
   };
 
@@ -30,12 +32,11 @@ class About extends Component {
               <h1 className="display-4">Employee Tracker</h1>
             </div>
           </div>
-          <form>
-            <div className="form-group">
-              <label for="search">Search</label>
-              <input type="search" className="form-control" id="search" placeholder="Search for employee by last name here"/>
-            </div>
-          </form>
+          <SearchForm
+            search={this.state.search}
+            handleFormSubmit={this.handleFormSubmit}
+            handleInputChange={this.handleInputChange}
+          />
             <ul className='list-group'>
               {this.state.results.map(user =>
               <li className='list-group-item' key={user.id.value}><img alt={user.name.last} src={user.picture.medium}/> &nbsp; {user.name.last}, &nbsp; {user.name.first} &nbsp; {user.email}</li>
