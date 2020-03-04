@@ -12,12 +12,16 @@ class About extends Component {
 
   //sets state of search to the target valiue
   updateSearch(event) {
-    this.setState({search: event.target.value.substr(0, 20)})
-  }
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+  };
 
   componentDidMount() {
     this.users();
-  }
+  };
 
   //gets api data
   users = () => {
@@ -33,7 +37,7 @@ class About extends Component {
     //filters users
     let filteredUsers = this.state.results.filter(
       (user) => {
-        return user.name.last.indexOf(this.state.search) !== -1
+        return user.name.last.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
       }
     )
     return (
@@ -61,7 +65,7 @@ class About extends Component {
             </form>
             <ul className='list-group'>
               {filteredUsers.map(user =>
-              <li className='list-group-item' key={user.id.value}><img alt={user.name.last} src={user.picture.medium}/> &nbsp; {user.name.last}, &nbsp; {user.name.first} &nbsp; {user.email}</li>
+              <li className='list-group-item' key={user.phone}><img alt={user.name.last} src={user.picture.medium}/> &nbsp; {user.name.last}, &nbsp; {user.name.first} &nbsp; {user.email}</li>
               )}
             </ul>
           </div>
