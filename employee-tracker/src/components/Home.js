@@ -14,6 +14,7 @@ class About extends Component {
   updateSearch(event) {
     const name = event.target.name;
     const value = event.target.value;
+    //key of value is name
     this.setState({
       [name]: value
     });
