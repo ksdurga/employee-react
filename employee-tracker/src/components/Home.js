@@ -10,16 +10,6 @@ class About extends Component {
     results: []
   };
 
-  //sets state of search to the target valiue
-  updateSearch(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    //key of value is name
-    this.setState({
-      [name]: value
-    });
-  };
-
   componentDidMount() {
     this.users();
   };
@@ -31,6 +21,16 @@ class About extends Component {
     // .then(res=>console.log(res.data.results))
       .then(res => this.setState({ results: res.data.results }))
       .catch(err => console.log(err));
+  };
+
+  //sets state of search to the target valiue
+  updateSearch(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    //key of value is name
+    this.setState({
+      [name]: value
+    });
   };
 
 
@@ -66,7 +66,7 @@ class About extends Component {
             </form>
             <ul className='list-group'>
               {filteredUsers.map(user =>
-              <li className='list-group-item' key={user.phone}><img alt={user.name.last} src={user.picture.medium}/> &nbsp; {user.name.last}, &nbsp; {user.name.first} &nbsp; {user.email}</li>
+              <li className='list-group-item' key={user.login.uuid}><img alt={user.name.last} src={user.picture.medium}/> &nbsp; {user.name.last}, &nbsp; {user.name.first} &nbsp; {user.email}</li>
               )}
             </ul>
           </div>
